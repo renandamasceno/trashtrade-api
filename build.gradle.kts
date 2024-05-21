@@ -30,7 +30,16 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm")
     implementation("org.jetbrains.exposed:exposed-core:0.41.1")
     implementation("org.jetbrains.exposed:exposed-jdbc:0.41.1")
-    implementation("com.h2database:h2:2.1.214")
+    implementation("org.flywaydb:flyway-core:10.8.1")
+    implementation("org.postgresql:postgresql:42.7.1")
+    implementation(platform("io.github.jan-tennert.supabase:bom:2.4.1"))
+    implementation("io.github.jan-tennert.supabase:postgrest-kt")
+    implementation("io.github.jan-tennert.supabase:storage-kt")
+
+    implementation("io.ktor:ktor-server-auth:$ktor_version")
+    implementation("io.ktor:ktor-server-auth-jwt:$ktor_version")
+
+    implementation("org.flywaydb:flyway-database-postgresql:10.4.1")
     implementation("io.ktor:ktor-server-call-logging-jvm")
     implementation("io.ktor:ktor-server-cors-jvm")
     implementation("io.ktor:ktor-server-auth-jvm")
