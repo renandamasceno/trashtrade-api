@@ -19,6 +19,16 @@ application {
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
 }
 
+tasks.jar {
+    // for the case if inside your project there is some duplicate
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest.attributes["Main-Class"] = "com.trash.ApplicationKt"
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    archiveBaseName.set(project.name + "-all")
+}
+
 repositories {
     mavenCentral()
 }
