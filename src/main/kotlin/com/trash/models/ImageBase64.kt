@@ -6,19 +6,22 @@ import org.jetbrains.exposed.sql.Table
 
 @Serializable
 data class ImageBase64(
+    val id: Int? = null,
     val base64Image: String,
     val registration: Long,
     val numberBatteries: Int
 )
 
 object Images : Table() {
+    private val id = integer("id").autoIncrement()
     val base64Image = varchar("image", 1024)
     val registration = long("registration")
     val numberBatteries = integer("numberBatteries")
 
-    override val primaryKey: PrimaryKey = PrimaryKey(registration)
+    override val primaryKey: PrimaryKey = PrimaryKey(id)
 
     fun toImages(row: ResultRow): ImageBase64 = ImageBase64(
+        id = row[id],
         base64Image = row[base64Image],
         registration = row[registration],
         numberBatteries = row[numberBatteries]
