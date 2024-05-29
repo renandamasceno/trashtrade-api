@@ -14,7 +14,7 @@ data class ImageBase64(
 
 object Images : Table() {
     private val id = integer("id").autoIncrement()
-    val base64Image = varchar("image", 10024)
+    val base64Image = text("image")
     val registration = long("registration")
     val numberBatteries = integer("numberBatteries")
 
